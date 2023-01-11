@@ -13,7 +13,7 @@ public interface MedecinService {
 	
 	Patient getPatientByNom(String nom);
 	
-	Medecin updateMedecin(Medecin medecin);
+	Medecin updateMedecin(Long id, Medecin medecin);
 	
 	void deleteMedecin(Long id);
 	

@@ -39,14 +39,22 @@ public class MedecinServiceImpl implements MedecinService{
 	}
 
 	@Override
-	public Medecin updateMedecin(Medecin medecin) {
-		// TODO Auto-generated method stub
-		return null;
+	public Medecin updateMedecin(Long id, Medecin medecin) {
+		Optional<Medecin> retrievedMedecin = medecinDAO.findById(id);
+		
+		Medecin _medecin = retrievedMedecin.get();
+		_medecin.setNom(medecin.getNom());
+		_medecin.setPrenom(medecin.getPrenom());
+		_medecin.setAdresse_hospital(medecin.getAdresse_hospital());
+		_medecin.setTel_hospital(medecin.getTel_hospital());
+		
+		medecinDAO.save(_medecin);
+		return _medecin;
 	}
 
 	@Override
 	public void deleteMedecin(Long id) {
-		// TODO Auto-generated method stub
+		medecinDAO.deleteById(id);
 		
 	}
 
