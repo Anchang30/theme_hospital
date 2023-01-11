@@ -2,18 +2,20 @@ package com.lab004.theme_hospital.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-//import jakarta.persistence.GeneratedValue;
-//import jakarta.persistence.GenerationType;
-//import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 
 @Entity
-@Table(name = "personne")
-public class Personne {
+@Inheritance(strategy =InheritanceType.TABLE_PER_CLASS)
+public abstract class Personne {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private Long id_personne;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 	@Column(name="nom")
 	private String  nom;
 	@Column(name="prenom")
@@ -21,10 +23,10 @@ public class Personne {
 	
 	
 	//Constructeurs
-	public Personne( String nom, String prenom) {
+	public Personne( Long id, String nom, String prenom) {
 		super();
-//		(attribut de la classe en commentaire : Long id_personne,)
-//		this.id_personne = id_personne;
+
+		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 
@@ -33,13 +35,15 @@ public class Personne {
 	public Personne ()
 		{}
 
-//	public Long getId_personne() {
-//		return id_personne;
-//	}
-//
-//	public void setId_personne(Long id_personne) {
-//		this.id_personne = id_personne;
-//	}
+	//GETTERS AND SETTERS 
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNom() {
 		return nom;

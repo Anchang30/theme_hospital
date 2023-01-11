@@ -32,11 +32,13 @@ public class Consultation {
 	@JoinColumn(name="ID_MEDECIN", nullable = false)
 	private Medecin medecin;
 	
-	public Consultation(Long id_consultation, LocalDate date_rdv, LocalTime heure_rdv, String motif) {
+	public Consultation(Long id_consultation, LocalDate date_rdv, LocalTime heure_rdv, String motif, Patient patient, Medecin medecin) {
 		this.id_consultation = id_consultation;
 		this.date_rdv = date_rdv;
 		this.heure_rdv = heure_rdv;
 		this.motif = motif;
+		this.patient = patient;
+		this.medecin = medecin;
 	}
 
 	public Consultation() {
