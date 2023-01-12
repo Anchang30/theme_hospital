@@ -27,6 +27,9 @@ public class MedecinController {
 	private MedecinService medecinService;
 	
 
+	
+	/// GET MEDECIN BY NAME A IMPLEMENTER COMME AVEC PATIENTS
+	
 	@GetMapping(path ="/")
 	public ResponseEntity<List<Medecin>> getMedecins() {
 		try {

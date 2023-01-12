@@ -33,6 +33,8 @@ public class ConsultationServiceImpl implements ConsultationService {
 		_consultation.setDate_rdv(consultation.getDate_rdv());
 		_consultation.setHeure_rdv(consultation.getHeure_rdv());
 		_consultation.setMotif(consultation.getMotif());
+		_consultation.setMedecin(consultation.getMedecin());
+		_consultation.setPatient(consultation.getPatient());
 		
 		consultationDAO.save(_consultation);
 		return _consultation;
@@ -45,7 +47,8 @@ public class ConsultationServiceImpl implements ConsultationService {
 		_consultation.setDate_rdv(consultation.getDate_rdv());
 		_consultation.setHeure_rdv(consultation.getHeure_rdv());
 		_consultation.setMotif(consultation.getMotif());
-		
+		_consultation.setMedecin(consultation.getMedecin());
+		_consultation.setPatient(consultation.getPatient());
 		consultationDAO.save(_consultation);
 		return _consultation;
 	}

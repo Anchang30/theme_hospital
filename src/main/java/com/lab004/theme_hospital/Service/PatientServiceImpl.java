@@ -87,7 +87,7 @@ public class PatientServiceImpl implements PatientService{
 	}
 
 	@Override
-	public Patient getPatientByNom(String nom) {
+	public Patient findByNom(String nom) {
 		Optional<Patient> patient = patientDAO.findByNom(nom);
 		if(patient.isPresent()) {
 			return patient.get();

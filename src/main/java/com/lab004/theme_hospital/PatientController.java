@@ -35,9 +35,9 @@ public class PatientController {
 	
 	
 	@GetMapping(path="/{nom}")
-	public ResponseEntity<Patient> getPatientByNom(String nom) {
+	public ResponseEntity<Patient> getPatientByName(@PathVariable String nom) {
 		try {
-			return new ResponseEntity<>(patientService.getPatientByNom(nom), HttpStatus.OK);
+			return new ResponseEntity<>(patientService.findByNom(nom), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}

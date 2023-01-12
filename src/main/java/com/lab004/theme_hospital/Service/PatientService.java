@@ -11,13 +11,11 @@ public interface PatientService {
 	
 	List<Patient> getPatient();
 
-	Patient getPatientByNom(String nom);
+	Patient findByNom(String nom);
 		
 	Patient updatePatient(Long id, Patient patient);
 	
 	Patient savePatient(Patient patient);
-	
-//	Consultation updateConsultation (Long id, Consultation consultation);
 	
 	void deletePatient(Long id);
 

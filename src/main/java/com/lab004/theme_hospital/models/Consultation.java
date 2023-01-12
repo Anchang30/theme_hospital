@@ -46,6 +46,8 @@ public class Consultation  implements Serializable {
 		this.medecin = medecin;
 	}
 
+
+
 	public Consultation() {
 	}
 
@@ -81,6 +83,20 @@ public class Consultation  implements Serializable {
 		this.motif = motif;
 	}
 	
-	
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public Medecin getMedecin() {
+		return medecin;
+	}
+
+	public void setMedecin(Medecin medecin) {
+		this.medecin = medecin;
+	}
 	
 }
