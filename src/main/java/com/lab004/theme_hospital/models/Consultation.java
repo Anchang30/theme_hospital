@@ -1,5 +1,5 @@
 package com.lab004.theme_hospital.models;
-
+ 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lab004.theme_hospital.Service.ConsultationService;
 import com.lab004.theme_hospital.models.Consultation; 
 
-	
-
+	  
+ 
 @RestController
 @RequestMapping(path="/api/consultations")	
 public class ConsultationController {

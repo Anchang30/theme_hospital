@@ -31,7 +31,7 @@ public abstract class Personne {
 		this.prenom = prenom;
 
 	}	
-	
+	 
 	public Personne(Long id) {
 		super();
 		this.id = id;

@@ -47,7 +47,7 @@ public class Medecin extends Personne implements Serializable {
 //	public void setId_medecin(Long id_medecin) {
 //		this.id_medecin = id_medecin;
 //	}
-
+ 
 	public Medecin() {
 	}
 

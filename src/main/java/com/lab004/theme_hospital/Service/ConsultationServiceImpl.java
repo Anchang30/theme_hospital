@@ -1,5 +1,5 @@
 package com.lab004.theme_hospital.Service;
-
+ 
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +24,7 @@ public class ConsultationServiceImpl implements ConsultationService {
 		return null;
 	}
 	
-
+ 
 	@Override
 	public Consultation updateConsultation(Long id, Consultation consultation) {
 		Optional<Consultation> retrievedConsultation = consultationDAO.findById(id);

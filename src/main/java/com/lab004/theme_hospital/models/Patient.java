@@ -45,7 +45,7 @@ public class Patient extends Personne implements Serializable  {
 		this.adresse = adresse;
 		this.num_secu = num_secu;
 	}
-
+ 
 	public Patient () {
 		
 	}
