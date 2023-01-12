@@ -1,5 +1,6 @@
 package com.lab004.theme_hospital.models;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import jakarta.persistence.Column;
@@ -14,9 +15,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Medecin")
-public class Medecin extends Personne {
+public class Medecin extends Personne implements Serializable {
 	
-//	@Id
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private Long id_medecin;
 	@Column(name="telHospital")
@@ -45,8 +50,6 @@ public class Medecin extends Personne {
 
 	public Medecin() {
 	}
-
-
 
 	public String getTel_hospital() {
 		return tel_hospital;

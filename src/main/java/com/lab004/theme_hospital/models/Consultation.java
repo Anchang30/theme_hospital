@@ -1,5 +1,6 @@
 package com.lab004.theme_hospital.models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -14,8 +15,12 @@ import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name="consultation")
-public class Consultation {
+public class Consultation  implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id_consultation;

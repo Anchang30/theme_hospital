@@ -1,5 +1,6 @@
 package com.lab004.theme_hospital.models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collection;
 
@@ -14,9 +15,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Patient")
-public class Patient extends Personne {
+public class Patient extends Personne implements Serializable  {
 	
-//	@Id
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	private Long id_patient;
 	@Column(name="telPatient")
@@ -69,7 +74,6 @@ public class Patient extends Personne {
 		this.adresse = adresse;
 	}
 
-
 	public Long getNum_secu() {
 		return num_secu;
 	}
@@ -78,7 +82,6 @@ public class Patient extends Personne {
 		this.num_secu = num_secu;
 	}
 	
-
 	public LocalDate getDate_naissance() {
 		return date_naissance;
 	}

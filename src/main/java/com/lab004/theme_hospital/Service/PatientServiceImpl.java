@@ -21,41 +21,20 @@ public class PatientServiceImpl implements PatientService{
 	private MedecinDAO medecinDAO;
 	private ConsultationDAO consultationDAO;
 	
-	@Override
-	public List<Medecin> getMedecins() {
-		List<Medecin> MEDECINS = (List<Medecin>)medecinDAO.findAll();
-		if(!MEDECINS.isEmpty()) {
-			return MEDECINS;
-		}
-		else {
-			return null;
-		}
-		
-	}
 
 	
-	@Override
-	public Medecin getMedecinByNom(String nom) {
-		Optional<Medecin> medecin = medecinDAO.findByNom(nom);
-		if(medecin.isPresent()) {
-			return medecin.get();
-			}
-		return null;
-	}
-	
-	
-	@Override
-	public Consultation updateConsultation(Long id, Consultation consultation) {
-		Optional<Consultation> retrievedConsultation = consultationDAO.findById(id);
-		
-		Consultation _consultation = retrievedConsultation.get();
-		_consultation.setDate_rdv(consultation.getDate_rdv());
-		_consultation.setHeure_rdv(consultation.getHeure_rdv());
-		_consultation.setMotif(consultation.getMotif());
-		
-		consultationDAO.save(_consultation);
-		return _consultation;
-	}
+//	@Override
+//	public Consultation updateConsultation(Long id, Consultation consultation) {
+//		Optional<Consultation> retrievedConsultation = consultationDAO.findById(id);
+//		
+//		Consultation _consultation = retrievedConsultation.get();
+//		_consultation.setDate_rdv(consultation.getDate_rdv());
+//		_consultation.setHeure_rdv(consultation.getHeure_rdv());
+//		_consultation.setMotif(consultation.getMotif());
+//		
+//		consultationDAO.save(_consultation);
+//		return _consultation;
+//	}
 
 
 	@Override
@@ -94,6 +73,26 @@ public class PatientServiceImpl implements PatientService{
 	public void deletePatient(Long id) {
 		patientDAO.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Patient> getPatient() {
+		List<Patient> PATIENTS = (List<Patient>)patientDAO.findAll();
+		if(!PATIENTS.isEmpty()) {
+			return PATIENTS;
+		}
+		else {
+			return null;
+		}
+	}
+
+	@Override
+	public Patient getPatientByNom(String nom) {
+		Optional<Patient> patient = patientDAO.findByNom(nom);
+		if(patient.isPresent()) {
+			return patient.get();
+			}
+		return null;
 	}
 
 	

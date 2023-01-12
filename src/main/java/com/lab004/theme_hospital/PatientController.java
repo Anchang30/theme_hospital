@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import com.lab004.theme_hospital.Service.MedecinService;
 import com.lab004.theme_hospital.Service.PatientService;
 import com.lab004.theme_hospital.models.Consultation;
 import com.lab004.theme_hospital.models.Medecin;
@@ -19,25 +19,31 @@ public class PatientController {
 
 	@Autowired
 	private PatientService patientService;
+	@Autowired
+	private MedecinService medecinService;
+	
+
 	
 	@GetMapping(path ="/")
-	public ResponseEntity<List<Medecin>> getMedecins() {
+	public ResponseEntity<List<Patient>> getPatient() {
 		try {
-			List<Medecin> medecins = patientService.getMedecins();
-			return new ResponseEntity<>(medecins, HttpStatus.OK);
+			List<Patient> patients = patientService.getPatient();
+			return new ResponseEntity<>(patients, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
+	
 	@GetMapping(path="/{nom}")
-	public ResponseEntity<Medecin> getMedecinByNom(String nom) {
+	public ResponseEntity<Patient> getPatientByNom(String nom) {
 		try {
-			return new ResponseEntity<>(patientService.getMedecinByNom(nom), HttpStatus.OK);
+			return new ResponseEntity<>(patientService.getPatientByNom(nom), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
 	
 	@PostMapping(path="/")
 	public ResponseEntity<Patient> savePatient(@RequestBody Patient patient) {
@@ -58,15 +64,15 @@ public class PatientController {
         }
     }
 	
-	@PutMapping(path = "/consultation/{id}")
-    public ResponseEntity<Consultation>  updateConsultation(@PathVariable Long id, @RequestBody Consultation consultation) {
-        try {
-            return new ResponseEntity<Consultation>(patientService.updateConsultation(id, consultation), HttpStatus.OK) ;
-        } catch (Exception e) {
-            // TODO: handle exception
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//	@PutMapping(path = "/consultation/{id}")
+//    public ResponseEntity<Consultation>  updateConsultation(@PathVariable Long id, @RequestBody Consultation consultation) {
+//        try {
+//            return new ResponseEntity<Consultation>(patientService.updateConsultation(id, consultation), HttpStatus.OK) ;
+//        } catch (Exception e) {
+//            // TODO: handle exception
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 	
 	
 	@DeleteMapping(path="/{id}")

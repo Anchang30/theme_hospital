@@ -26,16 +26,27 @@ public class MedecinController {
 	@Autowired
 	private MedecinService medecinService;
 	
-	@GetMapping(path = "/{id}")
-	public ResponseEntity<List<Consultation>> getConsultation(Long id) {
+//	@GetMapping(path = "/consulation/{id}")
+//	public ResponseEntity<List<Consultation>> getConsultation(Long id) {
+//		try {
+//			List<Consultation> consultations = medecinService.getConsultation(id);
+//			return new ResponseEntity<>(consultations, HttpStatus.OK);
+//		}
+//		catch (Exception e) {
+//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//		}
+//	}
+	
+	@GetMapping(path ="/")
+	public ResponseEntity<List<Medecin>> getMedecins() {
 		try {
-			List<Consultation> consultations = medecinService.getConsultation(id);
-			return new ResponseEntity<>(consultations, HttpStatus.OK);
-		}
-		catch (Exception e) {
+			List<Medecin> medecins = medecinService.getMedecins();
+			return new ResponseEntity<>(medecins, HttpStatus.OK);
+		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
 	
 	@PostMapping(path="/")
 	public ResponseEntity<Medecin> saveMedecin(@RequestBody Medecin medecin) {
@@ -46,15 +57,6 @@ public class MedecinController {
 		}
 	}
 	
-	
-	@GetMapping(path="/{nom}")
-	public ResponseEntity<Patient> getPatientByNom(String nom) {
-		try {
-			return new ResponseEntity<>(medecinService.getPatientByNom(nom), HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
 	
 	@PutMapping(path = "/{id}")
     public ResponseEntity<Medecin>  updateMedecin(@PathVariable Long id,@RequestBody Medecin medecin) {

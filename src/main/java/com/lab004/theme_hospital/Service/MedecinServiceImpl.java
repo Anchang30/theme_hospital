@@ -4,7 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.lab004.theme_hospital.DAO.ConsultationDAO;
 import com.lab004.theme_hospital.DAO.MedecinDAO;
@@ -19,27 +22,22 @@ public class MedecinServiceImpl implements MedecinService{
 	
 	@Autowired
 	private MedecinDAO medecinDAO;
+	@Autowired
 	private ConsultationDAO consultationDAO;
+	@Autowired
 	private PatientDAO patientDAO;
 
-	@Override
-	public List<Consultation> getConsultation(Long id) {
-		List<Consultation> consultation = (List<Consultation>) consultationDAO.findAll();
-		if(!consultation.isEmpty()) {
-			return consultation;
-		}
-		return null;
-	}
-
-	@Override
-	public Patient getPatientByNom(String nom) {
-		Optional<Patient> patient = patientDAO.findByNom(nom);
-		if(patient.isPresent()) {
-			return patient.get();
-			}
-		return null;
-	}
-
+//	@Override
+//	public List<Consultation> getConsultation(Long id) {
+//		List<Consultation> consultation = (List<Consultation>) consultationDAO.findAll();
+//		if(!consultation.isEmpty()) {
+//			return consultation;
+//		}
+//		return null;
+//	}
+	
+	
+	
 	@Override
 	public Medecin updateMedecin(Long id, Medecin medecin) {
 		Optional<Medecin> retrievedMedecin = medecinDAO.findById(id);
@@ -73,6 +71,17 @@ public class MedecinServiceImpl implements MedecinService{
 		
 		medecinDAO.save(_medecin);
 		return _medecin;
+	}
+
+	@Override
+	public List<Medecin> getMedecins() {
+		List<Medecin> MEDECINS = (List<Medecin>)medecinDAO.findAll();
+		if(!MEDECINS.isEmpty()) {
+			return MEDECINS;
+		}
+		else {
+			return null;
+		}
 	}
 
 }
