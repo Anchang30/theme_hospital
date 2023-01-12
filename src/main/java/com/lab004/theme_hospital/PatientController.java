@@ -19,10 +19,9 @@ public class PatientController {
 
 	@Autowired
 	private PatientService patientService;
-	@Autowired
-	private MedecinService medecinService;
-	
 
+	
+ 
 	
 	@GetMapping(path ="/")
 	public ResponseEntity<List<Patient>> getPatient() {

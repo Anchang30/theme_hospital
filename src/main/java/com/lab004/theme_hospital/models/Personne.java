@@ -32,6 +32,11 @@ public abstract class Personne {
 
 	}	
 	
+	public Personne(Long id) {
+		super();
+		this.id = id;
+	}
+
 	public Personne ()
 		{}
 

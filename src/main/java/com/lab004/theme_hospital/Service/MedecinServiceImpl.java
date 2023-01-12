@@ -51,7 +51,7 @@ public class MedecinServiceImpl implements MedecinService{
 		medecinDAO.save(_medecin);
 		return _medecin;
 	}
-
+ 
 	@Override
 	public void deleteMedecin(Long id) {
 		medecinDAO.deleteById(id);

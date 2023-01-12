@@ -18,7 +18,7 @@ import com.lab004.theme_hospital.Service.MedecinService;
 import com.lab004.theme_hospital.models.Consultation;
 import com.lab004.theme_hospital.models.Medecin;
 import com.lab004.theme_hospital.models.Patient;
-
+ 
 @RestController
 @RequestMapping(path = "/api/medecins")
 public class MedecinController {
@@ -26,17 +26,7 @@ public class MedecinController {
 	@Autowired
 	private MedecinService medecinService;
 	
-//	@GetMapping(path = "/consulation/{id}")
-//	public ResponseEntity<List<Consultation>> getConsultation(Long id) {
-//		try {
-//			List<Consultation> consultations = medecinService.getConsultation(id);
-//			return new ResponseEntity<>(consultations, HttpStatus.OK);
-//		}
-//		catch (Exception e) {
-//			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
-	
+
 	@GetMapping(path ="/")
 	public ResponseEntity<List<Medecin>> getMedecins() {
 		try {
