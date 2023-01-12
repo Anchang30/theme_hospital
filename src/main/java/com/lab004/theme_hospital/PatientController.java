@@ -30,7 +30,7 @@ public class PatientController {
 	}
 	}
 	
-	@GetMapping(path="/")
+	@GetMapping(path="/{nom}")
 	public ResponseEntity<Medecin> getMedecinByNom(String nom) {
 		try {
 			return new ResponseEntity<>(patientService.getMedecinByNom(nom), HttpStatus.OK);
@@ -59,8 +59,8 @@ public class PatientController {
 
     }
 	
-	@PutMapping(path = "/{id}")
-    public ResponseEntity<Consultation>  updateConsultation(@PathVariable Long id,@RequestBody Consultation consultation) {
+	@PutMapping(path = "/consultation/{id}")
+    public ResponseEntity<Consultation>  updateConsultation(@PathVariable Long id, @RequestBody Consultation consultation) {
         try {
             return new ResponseEntity<Consultation>(patientService.updateConsultation(id, consultation), HttpStatus.OK) ;
         } catch (Exception e) {
