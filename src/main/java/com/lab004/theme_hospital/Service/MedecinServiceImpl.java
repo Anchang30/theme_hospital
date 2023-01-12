@@ -1,10 +1,10 @@
 package com.lab004.theme_hospital.Service;
 
-import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lab004.theme_hospital.DAO.ConsultationDAO;
 import com.lab004.theme_hospital.DAO.MedecinDAO;
@@ -13,6 +13,8 @@ import com.lab004.theme_hospital.models.Consultation;
 import com.lab004.theme_hospital.models.Medecin;
 import com.lab004.theme_hospital.models.Patient;
 
+
+@Service
 public class MedecinServiceImpl implements MedecinService{
 	
 	@Autowired
@@ -56,6 +58,21 @@ public class MedecinServiceImpl implements MedecinService{
 	public void deleteMedecin(Long id) {
 		medecinDAO.deleteById(id);
 		
+	}
+
+	@Override
+	public Medecin saveMedecin(Medecin medecin) {
+	
+	
+		Medecin _medecin = new Medecin();
+		
+		_medecin.setNom(medecin.getNom());
+		_medecin.setPrenom(medecin.getPrenom());
+		_medecin.setAdresse_hospital(medecin.getAdresse_hospital());
+		_medecin.setTel_hospital(medecin.getTel_hospital());
+		
+		medecinDAO.save(_medecin);
+		return _medecin;
 	}
 
 }

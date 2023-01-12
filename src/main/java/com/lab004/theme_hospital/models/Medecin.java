@@ -32,6 +32,8 @@ public class Medecin extends Personne {
 		this.tel_hospital = tel_hospital;
 		this.adresse_hospital = adresse_hospital;
 	}
+	
+	
 
 //	public Long getId_medecin() {
 //		return id_medecin;
@@ -40,6 +42,11 @@ public class Medecin extends Personne {
 //	public void setId_medecin(Long id_medecin) {
 //		this.id_medecin = id_medecin;
 //	}
+
+	public Medecin() {
+	}
+
+
 
 	public String getTel_hospital() {
 		return tel_hospital;

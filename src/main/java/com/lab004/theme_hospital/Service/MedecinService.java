@@ -13,6 +13,8 @@ public interface MedecinService {
 	
 	Patient getPatientByNom(String nom);
 	
+	Medecin saveMedecin(Medecin medecin);
+	
 	Medecin updateMedecin(Long id, Medecin medecin);
 	
 	void deleteMedecin(Long id);

@@ -27,7 +27,7 @@ public class PatientController {
 			return new ResponseEntity<>(medecins, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+		}
 	}
 	
 	@GetMapping(path="/{nom}")
@@ -56,7 +56,6 @@ public class PatientController {
             // TODO: handle exception
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 	
 	@PutMapping(path = "/consultation/{id}")
@@ -67,7 +66,6 @@ public class PatientController {
             // TODO: handle exception
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 	
 	

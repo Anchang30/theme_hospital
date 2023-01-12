@@ -27,7 +27,10 @@ public class PatientServiceImpl implements PatientService{
 		if(!MEDECINS.isEmpty()) {
 			return MEDECINS;
 		}
-		return null;
+		else {
+			return null;
+		}
+		
 	}
 
 	
