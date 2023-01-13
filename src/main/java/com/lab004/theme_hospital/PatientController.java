@@ -63,15 +63,7 @@ public class PatientController {
         }
     }
 	
-//	@PutMapping(path = "/consultation/{id}")
-//    public ResponseEntity<Consultation>  updateConsultation(@PathVariable Long id, @RequestBody Consultation consultation) {
-//        try {
-//            return new ResponseEntity<Consultation>(patientService.updateConsultation(id, consultation), HttpStatus.OK) ;
-//        } catch (Exception e) {
-//            // TODO: handle exception
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+
 	
 	
 	@DeleteMapping(path="/{id}")
