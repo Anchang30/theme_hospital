@@ -20,7 +20,7 @@ public class PatientController {
 	@Autowired
 	private PatientService patientService;
 
-	
+
  
 	
 	@GetMapping(path ="/")

@@ -26,7 +26,6 @@ public class MedecinController {
 	@Autowired
 	private MedecinService medecinService;
 	
-
 	
 	/// GET MEDECIN BY NAME A IMPLEMENTER COMME AVEC PATIENTS
 	
@@ -35,6 +34,15 @@ public class MedecinController {
 		try {
 			List<Medecin> medecins = medecinService.getMedecins();
 			return new ResponseEntity<>(medecins, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(path="/{nom}")
+	public ResponseEntity<Medecin> getMedecinByName(@PathVariable String nom) {
+		try {
+			return new ResponseEntity<>(medecinService.findByNom(nom), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}

@@ -56,6 +56,7 @@ public class PatientControllerTests {
 		assertEquals(HttpStatus.OK, resultat.getStatusCode());
 	}
 	
+
 	
 	@Test(expected = NullPointerException.class)
 	public void getpatient_withException() throws Exception {
@@ -147,7 +148,7 @@ public class PatientControllerTests {
 		ResponseEntity<Patient> response = patientController.updatePatient(3L, patient);
 		
 		//Then
-		assertThat(response.getBody());
+		assertThat(response.getBody().getId());
 		
 	}
 	

@@ -84,4 +84,12 @@ public class MedecinServiceImpl implements MedecinService{
 		}
 	}
 
+	@Override
+	public Medecin findByNom(String nom) {
+		Optional<Medecin> medecin = medecinDAO.findByNom(nom);
+		if(medecin.isPresent()) {
+			return medecin.get();
+			}
+		return null;
+	}
 }
