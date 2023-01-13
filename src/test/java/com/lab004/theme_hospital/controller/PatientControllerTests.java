@@ -1,5 +1,6 @@
 package com.lab004.theme_hospital.controller;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -18,6 +19,8 @@ import org.springframework.http.ResponseEntity;
 import com.lab004.theme_hospital.PatientController;
 import com.lab004.theme_hospital.Service.PatientService;
 import com.lab004.theme_hospital.models.Patient;
+
+
 
 
 
@@ -55,13 +58,14 @@ public class PatientControllerTests {
 	
 	
 	@Test(expected = NullPointerException.class)
-	public void getBooks_withException() throws Exception {
+	public void getpatient_withException() throws Exception {
 		
 		when(patientService.getPatient()).thenThrow(new NullPointerException("Error occured"));
 		//Then
 		assertTrue(patientController.getPatient().getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR);
 		
 	}
+
 	
 //	public void getPatientByName
 	
@@ -80,6 +84,107 @@ public class PatientControllerTests {
 		
 		//Then
 		assertEquals(HttpStatus.OK, response.getStatusCode());	
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void getPatientByName_withException() throws Exception {
+		
+		when(patientService.findByNom( "J")).thenThrow(new NullPointerException("Error occured"));
+		//Then
+		assertTrue(patientController.getPatientByName("J").getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR);
+		
+	}
+	
+	@Test
+	public void createPatient_WhitoutException() throws Exception {
+		
+		//given
+		Patient patient = new Patient();
+		patient.setId(3L);
+		patient.setNom("BOU");
+		patient.setPrenom("Gilles");
+		patient.setAdresse("20 rue de la rue");
+		
+		//When
+		Mockito.when(patientService.savePatient(patient)).thenReturn(patient);
+		ResponseEntity<Patient> response = patientController.savePatient(patient);
+		
+		//Then
+		assertThat(response.getBody().getId()).isGreaterThan(0);
+		
+	}
+	@Test(expected = NullPointerException.class)
+	public void createPatient_withException() throws Exception {
+		
+		//Given
+		Patient patient = new Patient();
+		patient.setId(3L);
+		patient.setNom("BOU");
+		patient.setPrenom("Gilles");
+		patient.setAdresse("20 rue de la rue");
+		
+		when(patientService.savePatient(patient)).thenThrow(new NullPointerException("Error occured"));
+		//Then
+		assertTrue(patientController.savePatient(patient).getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR);
+		
+	}
+	
+	
+	
+	
+	@Test
+	public void updatePatient_WhitoutException() throws Exception {
+		
+		//given
+		Patient patient = new Patient();
+		patient.setId(3L);
+		patient.setNom("BOU");
+		patient.setPrenom("Gilles");
+		patient.setAdresse("20 rue de la rue");
+		
+		//When
+		Mockito.when(patientService.updatePatient(3L, patient)).thenReturn(patient);
+		ResponseEntity<Patient> response = patientController.updatePatient(3L, patient);
+		
+		//Then
+		assertThat(response.getBody());
+		
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void updatePatient_withException() throws Exception {
+		
+		//Given
+		Patient patient = new Patient();
+		patient.setId(3L);
+		patient.setNom("BOU");
+		patient.setPrenom("Gilles");
+		patient.setAdresse("20 rue de la rue");
+		
+		when(patientService.updatePatient(3L, patient)).thenThrow(new NullPointerException("Error occured"));
+		//Then
+		assertTrue(patientController.updatePatient(3L, patient).getStatusCode() == HttpStatus.INTERNAL_SERVER_ERROR);
+		
+	}
+	
+	
+	
+	@Test
+	public void deletePatient() throws Exception {
+		
+		Patient patient = new Patient();
+		patient.setId(3L);
+		patient.setNom("BOU");
+		patient.setPrenom("Gilles");
+		patient.setAdresse("20 rue de la rue");
+		
+		patientController.deletePatient(3L);
+		ResponseEntity<Patient> retrievedPatient = patientController.getPatientByName("BOU");
+		
+		//Then
+		assertThat(retrievedPatient.getBody()).isNull();
+		
+		
 	}
 	
 }
