@@ -18,8 +18,6 @@ public class PatientServiceImpl implements PatientService{
 
 	@Autowired
 	private PatientDAO patientDAO;
-	private MedecinDAO medecinDAO;
-	private ConsultationDAO consultationDAO;
 	
 
 	
