@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lab004.theme_hospital.Service.ConsultationService;
-import com.lab004.theme_hospital.models.Consultation; 
+import com.lab004.theme_hospital.models.Consultation;
+ 
 
 	  
  
@@ -33,6 +34,15 @@ public class ConsultationController {
 			return new ResponseEntity<>(consultations, HttpStatus.OK);
 		}
 		catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(path="/{id}")
+	public ResponseEntity<Consultation> getConsultationById(@PathVariable Long id) {
+		try {
+			return new ResponseEntity<>(consultationService.findById(id), HttpStatus.OK);
+		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
@@ -58,7 +68,7 @@ public class ConsultationController {
 	
 	
 	@DeleteMapping(path="/{id}")
-	public void deleteMedecin(@PathVariable Long id) {
+	public void deleteConsultation(@PathVariable Long id) {
 		consultationService.deleteConsultation(id);
 	}
 }

@@ -24,7 +24,6 @@ import com.lab004.theme_hospital.models.Patient;
 
 
 
-
 @RunWith(org.mockito.junit.MockitoJUnitRunner.class)
 public class PatientControllerTests {
 

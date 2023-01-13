@@ -10,6 +10,7 @@ import com.lab004.theme_hospital.DAO.ConsultationDAO;
 import com.lab004.theme_hospital.models.Consultation;
 
 
+
 @Service
 public class ConsultationServiceImpl implements ConsultationService {
 	
@@ -60,5 +61,14 @@ public class ConsultationServiceImpl implements ConsultationService {
 		
 	}
 
+
+	@Override
+	public Consultation findById(Long id) {
+		Optional<Consultation> consultation = consultationDAO.findById(id);
+		if(consultation.isPresent()) {
+			return consultation.get();
+			}
+		return null;
+	}
 		
 }
